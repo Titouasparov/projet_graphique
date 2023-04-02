@@ -8,3 +8,7 @@ CMakeCache.txt
 cmake_install.cmake
 opengl_program
 test_fs_support_case_sensitivity
+CMakeDoxyfile.in
+CMakeDoxygenDefaults.cmake
+Makefile
+test_fs_support_CASE_sensitivity
