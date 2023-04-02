@@ -4,16 +4,36 @@
 
 Viewer::Viewer(int width, int height)
 {
+    glewExperimental = true;
+
+    if (!glfwInit())    // initialize window system glfw
+    {
+        std::cerr << "Failed to initialize GLFW" << std::endl;
+        glfwTerminate();
+    }
+
     // version hints: create GL window with >= OpenGL 3.3 and core profile
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
     win = glfwCreateWindow(width, height, "Viewer", NULL, NULL);
+
+    if (win == NULL) {
+        std::cerr << "Failed to create window" << std::endl;
+        glfwTerminate();
+    }
 
     // make win's OpenGL context current; no OpenGL calls can happen before
     glfwMakeContextCurrent(win);
+
+    if (glewInit() != GLEW_OK)
+    {
+        std::cerr << "Failed to initialize GLEW" << std::endl;
+        glfwTerminate();
+    }
 
     // register event handlers
     glfwSetKeyCallback(win, [](GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -23,7 +43,7 @@ Viewer::Viewer(int width, int height)
     });
 
     // useful message to check OpenGL renderer characteristics
-    std::cout << "OpenGL " << glGetString(GL_VERSION) << ", GLSL "
+    std::cout << glGetString(GL_VERSION) << ", GLSL "
               << glGetString(GL_SHADING_LANGUAGE_VERSION) << ", Renderer "
               << glGetString(GL_RENDERER) << std::endl;
 
