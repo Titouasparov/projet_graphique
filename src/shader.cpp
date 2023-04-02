@@ -1,22 +1,21 @@
 #include "shader.h"
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
 
 using namespace std;
 
-Shader::Shader(const char* vertex_source, const char* fragment_source) {
+Shader::Shader(const std::string& vertex_path, const std::string& fragment_path) {
     GLuint vert_shader, frag_shader;
     GLint status;
 
     // Create vertex shader
-    vert_shader = compile_shader(vertex_source, GL_VERTEX_SHADER);
+    vert_shader = compile_shader(vertex_path, GL_VERTEX_SHADER);
 
     // Create fragment shader
-    frag_shader = compile_shader(fragment_source, GL_FRAGMENT_SHADER);
+    frag_shader = compile_shader(fragment_path, GL_FRAGMENT_SHADER);
 
     // Create shader program
     glid = glCreateProgram();
@@ -47,10 +46,26 @@ GLuint Shader::get_id() {
     return glid;
 }
 
-GLuint Shader::compile_shader(const char* src, GLenum shader_type) {
+GLuint Shader::compile_shader(const std::string& path, GLenum shader_type) {
+
+    string source;
+    ifstream file(path);
+
+    if (!file.is_open()) {
+        cerr << "Failed to open shader file: " << path << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    string line;
+    while (getline(file, line)) {
+        source += line + "\n";
+    }
+
+    file.close();
+    
     GLuint shader;
     GLint status;
-    const GLchar* src_array[1] = {src};
+    const GLchar* src_array[1] = {source.c_str()};
 
     // Create shader
     shader = glCreateShader(shader_type);

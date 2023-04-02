@@ -1,5 +1,7 @@
 #include "triangle.h"
 
+#include <iostream>
+
 Triangle::Triangle(Shader shader_program) : shader_program_(shader_program.get_id()) {
     glGenVertexArrays(1, &vao_);
     glBindVertexArray(vao_);

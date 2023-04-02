@@ -8,8 +8,8 @@
 class Triangle : public Drawable {
 public:
     Triangle(Shader shader_program);
-    void draw() override;
-    void key_handler(int key) override;
+    void draw();
+    void key_handler(int key);
     virtual ~Triangle();
 
 private:

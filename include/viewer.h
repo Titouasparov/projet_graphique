@@ -21,6 +21,7 @@ public:
 private:
     GLFWwindow* win;
     std::vector<Drawable*> drawables;
+    static void key_callback_static(GLFWwindow* window, int key, int scancode, int action, int mods);
 };
 
 #endif // VIEWER_H

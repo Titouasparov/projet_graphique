@@ -3,11 +3,13 @@
 
 #include <GL/glew.h>
 
+#include <string>
+
 /** \brief A graphic program.*/
 class Shader {
 public:
     /** \brief the shader constructor. Should never be called alone (use loader functions)*/
-    Shader(const char* vertex_source, const char* fragment_source);
+    Shader(const std::string& vertex_path, const std::string& fragment_path);
 
     /* \brief Destructor. Destroy the shader component created */
     ~Shader();
@@ -16,7 +18,7 @@ public:
 
 private:
     GLuint glid;
-    GLuint compile_shader(const char* src, GLenum shader_type);
+    GLuint compile_shader(const std::string& path, GLenum shader_type);
 };
 
 #endif // SHADER_H

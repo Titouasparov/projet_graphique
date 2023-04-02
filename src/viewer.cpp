@@ -4,8 +4,6 @@
 
 Viewer::Viewer(int width, int height)
 {
-    glewExperimental = true;
-
     if (!glfwInit())    // initialize window system glfw
     {
         std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -18,7 +16,6 @@ Viewer::Viewer(int width, int height)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-    glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
     win = glfwCreateWindow(width, height, "Viewer", NULL, NULL);
 
     if (win == NULL) {
@@ -35,12 +32,11 @@ Viewer::Viewer(int width, int height)
         glfwTerminate();
     }
 
+    // Set user pointer for GLFW window to this Viewer instance
+    glfwSetWindowUserPointer(win, this);
+
     // register event handlers
-    glfwSetKeyCallback(win, [](GLFWwindow* window, int key, int scancode, int action, int mods)
-    {
-        Viewer* viewer = static_cast<Viewer*>(glfwGetWindowUserPointer(window));
-        viewer->on_key(key);
-    });
+    glfwSetKeyCallback(win, key_callback_static);
 
     // useful message to check OpenGL renderer characteristics
     std::cout << glGetString(GL_VERSION) << ", GLSL "
@@ -80,6 +76,12 @@ void Viewer::add(Drawable* drawable)
 {
     // add objects to draw in this window
     drawables.push_back(drawable);
+}
+
+void Viewer::key_callback_static(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    Viewer* viewer = static_cast<Viewer*>(glfwGetWindowUserPointer(window));
+    viewer->on_key(key);
 }
 
 void Viewer::on_key(int key)
