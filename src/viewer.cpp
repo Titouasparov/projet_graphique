@@ -16,6 +16,7 @@ Viewer::Viewer(int width, int height)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    
     win = glfwCreateWindow(width, height, "Viewer", NULL, NULL);
 
     if (win == NULL) {
@@ -46,6 +47,12 @@ Viewer::Viewer(int width, int height)
     // initialize GL by setting viewport and default render characteristics
     glClearColor(0.1f, 0.1f, 0.1f, 0.1f);
 
+    /* tell GL to only draw onto a pixel if the shape is closer to the viewer
+    than anything already drawn at that pixel */
+    glEnable( GL_DEPTH_TEST ); /* enable depth-testing */
+    /* with LESS depth-testing interprets a smaller depth value as meaning "closer" */
+    glDepthFunc( GL_LESS );
+
     // initially empty list of object to draw
     drawables = std::vector<Drawable*>();
 }
@@ -56,7 +63,7 @@ void Viewer::run()
     while (!glfwWindowShouldClose(win))
     {
         // clear draw buffer
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // draw our scene objects
         for (auto& drawable : drawables)
@@ -64,12 +71,15 @@ void Viewer::run()
             drawable->draw();
         }
 
-        // flush render commands, and swap draw buffers
-        glfwSwapBuffers(win);
-
         // Poll for and process events
         glfwPollEvents();
+
+        // flush render commands, and swap draw buffers
+        glfwSwapBuffers(win);
     }
+
+    /* close GL context and any other GLFW resources */
+    glfwTerminate();
 }
 
 void Viewer::add(Drawable* drawable)

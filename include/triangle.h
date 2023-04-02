@@ -7,15 +7,15 @@
 
 class Triangle : public Drawable {
 public:
-    Triangle(Shader shader_program);
+    Triangle(Shader *shader_program);
     void draw();
     void key_handler(int key);
     virtual ~Triangle();
 
 private:
-    GLuint vao_;
-    GLuint vbo_;
     GLuint shader_program_;
+    GLuint VAO;
+    GLuint VBO;
 };
 
 #endif

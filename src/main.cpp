@@ -15,8 +15,8 @@ int main()
     // get shader directory
     std::string shader_dir = SHADER_DIR;
 
-    Shader color_shader(shader_dir + "color.vert", shader_dir + "color.frag");
-    viewer.add(new Triangle(color_shader));
+    Shader *color_shader = new Shader(shader_dir + "color.vert", shader_dir + "color.frag");
+    //viewer.add(new Triangle(color_shader));
 
-    viewer.run();              // main function keeps
+    viewer.run();
 }
