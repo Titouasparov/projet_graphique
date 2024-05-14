@@ -1,5 +1,6 @@
 #include "viewer.h"
 #include "triangle.h"
+#include "pyramid.h"
 #include "shader.h"
 #include <string>
 
@@ -16,7 +17,7 @@ int main()
     std::string shader_dir = SHADER_DIR;
 
     Shader *color_shader = new Shader(shader_dir + "color.vert", shader_dir + "color.frag");
-    //viewer.add(new Triangle(color_shader));
+    viewer.add(new Pyramid(color_shader));
 
     viewer.run();
 }

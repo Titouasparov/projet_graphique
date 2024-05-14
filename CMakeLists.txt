@@ -23,6 +23,7 @@ set(SOURCES
     ${SRC_DIR}/shader.cpp
     ${SRC_DIR}/viewer.cpp
     ${SRC_DIR}/triangle.cpp
+    ${SRC_DIR}/pyramid.cpp
 )
 
 # Define Shader director
