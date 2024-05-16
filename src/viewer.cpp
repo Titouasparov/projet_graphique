@@ -1,6 +1,9 @@
 #include "viewer.h"
 
 #include <iostream>
+#include <glm/glm.hpp>
+#include "glm/ext.hpp"
+#include <glm/gtc/matrix_transform.hpp>
 
 Viewer::Viewer(int width, int height)
 {
@@ -53,8 +56,8 @@ Viewer::Viewer(int width, int height)
     /* with LESS depth-testing interprets a smaller depth value as meaning "closer" */
     glDepthFunc( GL_LESS );
 
-    // initially empty list of object to draw
-    drawables = std::vector<Drawable*>();
+    // initialize our scene_root
+    scene_root = new Node();
 }
 
 void Viewer::run()
@@ -65,11 +68,16 @@ void Viewer::run()
         // clear draw buffer
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // draw our scene objects
-        for (auto& drawable : drawables)
-        {
-            drawable->draw();
-        }
+        glm::mat4 model = glm::mat4(1.0f);
+
+        glm::mat4 rot_mat = glm::mat4(1.0f);
+        glm::mat4 tra_mat = glm::mat4(1.0f);
+        glm::mat4 sca_mat = glm::mat4(1.0f);
+        glm::mat4 view = tra_mat * rot_mat * sca_mat;
+
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 10.0f);
+
+        scene_root->draw(model, view, projection);
 
         // Poll for and process events
         glfwPollEvents();
@@ -80,12 +88,6 @@ void Viewer::run()
 
     /* close GL context and any other GLFW resources */
     glfwTerminate();
-}
-
-void Viewer::add(Drawable* drawable)
-{
-    // add objects to draw in this window
-    drawables.push_back(drawable);
 }
 
 void Viewer::key_callback_static(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -100,11 +102,5 @@ void Viewer::on_key(int key)
     if (key == GLFW_KEY_ESCAPE || key == GLFW_KEY_Q)
     {
         glfwSetWindowShouldClose(win, GLFW_TRUE);
-    }
-
-    // Propagate key event to all registered drawables
-    for (auto& drawable : drawables)
-    {
-        drawable->key_handler(key);
     }
 }

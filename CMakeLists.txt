@@ -19,11 +19,13 @@ include_directories(${GLM_DIR})
 # Source files
 set(SOURCES
     ${SRC_DIR}/main.cpp
-    ${SRC_DIR}/drawable.cpp
+    ${SRC_DIR}/node.cpp
+    ${SRC_DIR}/shape.cpp
     ${SRC_DIR}/shader.cpp
     ${SRC_DIR}/viewer.cpp
     ${SRC_DIR}/triangle.cpp
     ${SRC_DIR}/pyramid.cpp
+    ${SRC_DIR}/cylinder.cpp
 )
 
 # Define Shader director

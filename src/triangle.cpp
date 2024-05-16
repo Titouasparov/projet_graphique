@@ -1,8 +1,6 @@
 #include "triangle.h"
 
-#include <iostream>
-
-Triangle::Triangle(Shader *shader_program) : shader_program_(shader_program->get_id()) {
+Triangle::Triangle(Shader *shader_program) : Shape(shader_program) {
 
     GLfloat vertex_buffer_data[] = {
         0.0f, 0.5f, 0.0f,
@@ -27,10 +25,13 @@ Triangle::~Triangle() {
     glDeleteBuffers(1, &VBO);
 }
 
-void Triangle::draw() {
+void Triangle::draw(glm::mat4& model, glm::mat4& view, glm::mat4& projection) {
 
     glUseProgram( this->shader_program_ );
     glBindVertexArray( VAO );
+
+    Shape::draw(model, view, projection);
+
     /* draw points 0-3 from the currently bound VAO with current in-use shader */
     glDrawArrays( GL_TRIANGLES, 0, 3 );
 }

@@ -1,21 +1,17 @@
-#ifndef TRIANGLE_H
-#define TRIANGLE_H
+#pragma once
 
-#include "drawable.h"
+#include "shape.h"
 #include "shader.h"
 #include <GL/glew.h>
 
-class Triangle : public Drawable {
+class Triangle : public Shape {
 public:
     Triangle(Shader *shader_program);
-    void draw();
+    void draw(glm::mat4& model, glm::mat4& view, glm::mat4& projection);
     void key_handler(int key);
     virtual ~Triangle();
 
 private:
-    GLuint shader_program_;
     GLuint VAO;
     GLuint VBO;
 };
-
-#endif

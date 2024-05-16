@@ -1,19 +1,18 @@
 #ifndef PYRAMID_H
 #define PYRAMID_H
 
-#include "drawable.h"
+#include "shape.h"
 #include "shader.h"
 #include <GL/glew.h>
 
-class Pyramid : public Drawable {
+class Pyramid : public Shape {
 public:
     Pyramid(Shader *shader_program);
-    void draw();
+    void draw(glm::mat4& model, glm::mat4& view, glm::mat4& projection);
     void key_handler(int key);
     virtual ~Pyramid();
 
 private:
-    GLuint shader_program_;
     GLuint VAO;
     GLuint buffers[2];
 };
