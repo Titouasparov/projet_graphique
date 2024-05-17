@@ -35,6 +35,9 @@ set(SOURCES
 # Define Shader director
 add_compile_definitions(SHADER_DIR="${CMAKE_CURRENT_SOURCE_DIR}/shaders/")
 
+# Define Shader director
+add_compile_definitions(TEXTURE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/textures/")
+
 # GLEW library
 add_subdirectory(${GLEW_DIR})
 set(LIBS ${LIBS} libglew_static)

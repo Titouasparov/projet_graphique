@@ -10,13 +10,14 @@ void TexturedSphere::draw(glm::mat4& model, glm::mat4& view, glm::mat4& projecti
 
     glUseProgram(this->shader_program_);
 
-    // TODO activate, bind the texture
-    glUniform1i(loc_diffuse_map, 1); // TODO send the correct texture to the shader
+    // texture access setups
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, this->texture->getGLid());
+    glUniform1i(loc_diffuse_map, 0);
 
     Sphere::draw(model, view, projection);
 
-    // TODO Unbind the texture
-
-
+    // leave clean state for easier debugging
+    glBindTexture(GL_TEXTURE_2D, 0);
     glUseProgram(0);
 }

@@ -10,6 +10,10 @@
 #error "SHADER_DIR not defined"
 #endif
 
+#ifndef TEXTURE_DIR
+#error "TEXTURE_DIR not defined"
+#endif
+
 int main()
 {
     // create window, add shaders & scene objects, then run rendering loop
@@ -20,7 +24,10 @@ int main()
 
     Shader *texture_shader = new Shader(shader_dir + "texture.vert", shader_dir + "texture.frag");
 
-    Texture *texture = new Texture("./textures/texture1.png");
+    // get textures directory
+    std::string texture_dir = TEXTURE_DIR;
+
+    Texture *texture = new Texture(texture_dir + "texture1.png");
     Shape* sphere1 = new TexturedSphere(texture_shader, texture);
     glm::mat4 sphere1_mat = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, -4.0f))
         * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f, 1.0f, 1.0f))
