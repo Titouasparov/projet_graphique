@@ -27,7 +27,8 @@ Triangle::~Triangle() {
 
 void Triangle::draw(glm::mat4& model, glm::mat4& view, glm::mat4& projection) {
 
-    glUseProgram( this->shader_program_ );
+    glUseProgram(this->shader_program_);
+
     glBindVertexArray( VAO );
 
     Shape::draw(model, view, projection);

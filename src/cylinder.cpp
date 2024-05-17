@@ -56,11 +56,12 @@ Cylinder::Cylinder(Shader *shader_program, float height, float radius, int slice
 }
 
 void Cylinder::draw(glm::mat4& model, glm::mat4& view, glm::mat4& projection)
-{
+{   
     glUseProgram(this->shader_program_);
+
     glBindVertexArray(VAO);
 
-    Shape::draw(model, view, projection);
+    Shape::draw(model, view, projection);    
 
     glDrawElements(GL_TRIANGLE_STRIP, num_indices, GL_UNSIGNED_INT, nullptr);
 }
