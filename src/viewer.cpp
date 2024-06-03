@@ -7,6 +7,14 @@
 
 Viewer::Viewer(int width, int height)
 {
+    // Initialize camera parameters
+    camera_position = glm::vec3(0.0f, 0.0f, 3.0f);
+    camera_front = glm::vec3(0.0f, 0.0f, -1.0f);
+    camera_up = glm::vec3(0.0f, 1.0f, 0.0f);
+    camera_speed = 0.05f;
+    camera_yaw = -90.0f;
+    camera_pitch = 0.0f;
+
     if (!glfwInit())    // initialize window system glfw
     {
         std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -38,9 +46,12 @@ Viewer::Viewer(int width, int height)
 
     // Set user pointer for GLFW window to this Viewer instance
     glfwSetWindowUserPointer(win, this);
+    // Lock the mouse inside the window
+    glfwSetInputMode(win, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // register event handlers
     glfwSetKeyCallback(win, key_callback_static);
+    glfwSetCursorPosCallback(win, mouse_callback_static); // Add this line
 
     // useful message to check OpenGL renderer characteristics
     std::cout << glGetString(GL_VERSION) << ", GLSL "
@@ -65,15 +76,14 @@ void Viewer::run()
     // Main render loop for this OpenGL window
     while (!glfwWindowShouldClose(win))
     {
+        process_input();
         // clear draw buffer
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glm::mat4 model = glm::mat4(1.0f);
 
-        glm::mat4 rot_mat = glm::mat4(1.0f);
-        glm::mat4 tra_mat = glm::mat4(1.0f);
-        glm::mat4 sca_mat = glm::mat4(1.0f);
-        glm::mat4 view = tra_mat * rot_mat * sca_mat;
+        // Use glm::lookAt to create a view matrix from the camera vectors
+        glm::mat4 view = glm::lookAt(camera_position, camera_position + camera_front, camera_up);
 
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 10.0f);
 
@@ -103,4 +113,68 @@ void Viewer::on_key(int key)
     {
         glfwSetWindowShouldClose(win, GLFW_TRUE);
     }
+}
+
+void Viewer::update_camera_vectors() {
+    glm::vec3 front;
+    front.x = cos(glm::radians(camera_yaw)) * cos(glm::radians(camera_pitch));
+    front.y = sin(glm::radians(camera_pitch));
+    front.z = sin(glm::radians(camera_yaw)) * cos(glm::radians(camera_pitch));
+    camera_front = glm::normalize(front);
+
+}
+
+void Viewer::process_input() {
+// Camera movement
+    if (glfwGetKey(win, GLFW_KEY_W) == GLFW_PRESS)
+        camera_position += camera_speed * camera_front;
+    if (glfwGetKey(win, GLFW_KEY_S) == GLFW_PRESS)
+        camera_position -= camera_speed * camera_front;
+    if (glfwGetKey(win, GLFW_KEY_A) == GLFW_PRESS)
+        camera_position -= glm::normalize(glm::cross(camera_front, camera_up)) * camera_speed;
+    if (glfwGetKey(win, GLFW_KEY_D) == GLFW_PRESS)
+        camera_position += glm::normalize(glm::cross(camera_front, camera_up)) * camera_speed;
+
+    // Camera rotation (example)
+    if (glfwGetKey(win, GLFW_KEY_LEFT) == GLFW_PRESS)
+        camera_yaw -= camera_speed;
+    if (glfwGetKey(win, GLFW_KEY_RIGHT) == GLFW_PRESS)
+        camera_yaw += camera_speed;
+
+    // Update camera vectors after modifying yaw or pitch
+    update_camera_vectors();
+}
+
+void Viewer::mouse_callback_static(GLFWwindow *window, double xpos, double ypos) {
+    Viewer* viewer = static_cast<Viewer*>(glfwGetWindowUserPointer(window));
+    viewer->on_mouse(xpos, ypos);
+}
+
+void Viewer::on_mouse(double xpos, double ypos) {
+    if (first_mouse_movement) {
+        last_mouse_x = xpos;
+        last_mouse_y = ypos;
+        first_mouse_movement = false;
+    }
+
+    float xoffset = xpos - last_mouse_x;
+    float yoffset = last_mouse_y - ypos; // reversed since y-coordinates go from bottom to top
+
+    last_mouse_x = xpos;
+    last_mouse_y = ypos;
+
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
+
+    camera_yaw += xoffset;
+    camera_pitch += yoffset;
+
+    // Make sure that when pitch is out of bounds, screen doesn't get flipped
+    if (camera_pitch > 89.0f)
+        camera_pitch = 89.0f;
+    if (camera_pitch < -89.0f)
+        camera_pitch = -89.0f;
+
+    // Update camera vectors after modifying yaw or pitch
+    update_camera_vectors();
 }
