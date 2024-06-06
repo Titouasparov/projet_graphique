@@ -9,6 +9,7 @@
 
 #include "shader.h"
 #include "node.h"
+#include "Skybox.h"
 
 class Viewer {
 public:
@@ -18,6 +19,7 @@ public:
     void on_key(int key);
 
     Node *scene_root;
+    Skybox *skybox;
 
 private:
     GLFWwindow* win;

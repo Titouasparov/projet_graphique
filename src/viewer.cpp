@@ -3,6 +3,7 @@
 #include <iostream>
 #include <glm/glm.hpp>
 #include "glm/ext.hpp"
+#include "Skybox.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 Viewer::Viewer(int width, int height)
@@ -14,6 +15,10 @@ Viewer::Viewer(int width, int height)
     camera_speed = 0.05f;
     camera_yaw = -90.0f;
     camera_pitch = 0.0f;
+    std::string texture_dir = TEXTURE_DIR;
+    std::string shader_dir = SHADER_DIR;
+
+
 
     if (!glfwInit())    // initialize window system glfw
     {
@@ -69,6 +74,20 @@ Viewer::Viewer(int width, int height)
 
     // initialize our scene_root
     scene_root = new Node();
+    // Create skybox
+    std::vector<std::string> faces = {
+            texture_dir + "skybox_right.png",
+            texture_dir + "skybox_left.png",
+            texture_dir + "skybox_top.png",
+            texture_dir + "skybox_bottom.png",
+            texture_dir + "skybox_front.png",
+            texture_dir + "skybox_back.png"
+    };
+
+// Use a different shader for the skybox
+    Shader *skybox_shader = new Shader(shader_dir + "skybox.vert", shader_dir + "skybox.frag");
+    skybox = new Skybox(skybox_shader, faces);
+
 }
 
 void Viewer::run()
@@ -87,6 +106,9 @@ void Viewer::run()
 
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 10.0f);
 
+        // Dessiner la skybox
+        skybox->draw(view, projection);
+        // Dessiner la scène principale
         scene_root->draw(model, view, projection);
 
         // Poll for and process events

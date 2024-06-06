@@ -4,6 +4,7 @@
 #include "texture.h"
 #include "node.h"
 #include "shader.h"
+#include "Skybox.h"
 #include <string>
 
 #ifndef SHADER_DIR
@@ -50,7 +51,12 @@ int main()
 
     sphere2_node->add(sphere2);
 
+
+
+    viewer.scene_root->add(sphere1_node);
     viewer.scene_root->add(sphere2_node);
+
+
 
     viewer.run();
 }

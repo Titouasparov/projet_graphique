@@ -4,6 +4,8 @@
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 using namespace std;
 
@@ -62,7 +64,7 @@ GLuint Shader::compile_shader(const std::string& path, GLenum shader_type) {
     }
 
     file.close();
-    
+
     GLuint shader;
     GLint status;
     const GLchar* src_array[1] = {source.c_str()};
@@ -82,4 +84,10 @@ GLuint Shader::compile_shader(const std::string& path, GLenum shader_type) {
     }
 
     return shader;
+}
+void Shader::use() {
+    glUseProgram(glid);
+}
+void Shader::setMat4(const std::string &name, const glm::mat4 &mat) const {
+    glUniformMatrix4fv(glGetUniformLocation(glid, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat));
 }
