@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="glew"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\external\;CMake Files\external\glfw\;CMake Files\external\glfw\CMake\;CMake Files\external\glfw\src\;CMake Files\external\glew-cmake\;CMake Files\external\glm\;CMake Files\external\glm\glm\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libglew_static">
+				<Option output="C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/lib/libglewd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLEW_STATIC"/>
+					<Add option="-DWIN32_MEAN_AND_LEAN"/>
+					<Add option="-DVC_EXTRALEAN"/>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DGLEW_NO_GLU"/>
+					<Add option="-DSHADER_DIR=&quot;C:/Users/beauv/CLionProjects/projet_graphique/shaders/&quot;"/>
+					<Add option="-DTEXTURE_DIR=&quot;C:/Users/beauv/CLionProjects/projet_graphique/textures/&quot;"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glew-cmake/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glfw/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glm"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+					<Add directory="/mingw/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 libglew_static"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libglew_static/fast">
+				<Option output="C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/lib/libglewd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLEW_STATIC"/>
+					<Add option="-DWIN32_MEAN_AND_LEAN"/>
+					<Add option="-DVC_EXTRALEAN"/>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DGLEW_NO_GLU"/>
+					<Add option="-DSHADER_DIR=&quot;C:/Users/beauv/CLionProjects/projet_graphique/shaders/&quot;"/>
+					<Add option="-DTEXTURE_DIR=&quot;C:/Users/beauv/CLionProjects/projet_graphique/textures/&quot;"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glew-cmake/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glfw/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glm"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+					<Add directory="/mingw/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 libglew_static/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libglew_shared">
+				<Option output="C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/bin/libglew-sharedd.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLEW_BUILD"/>
+					<Add option="-DWIN32_MEAN_AND_LEAN"/>
+					<Add option="-DVC_EXTRALEAN"/>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DGLEW_NO_GLU"/>
+					<Add option="-DSHADER_DIR=&quot;C:/Users/beauv/CLionProjects/projet_graphique/shaders/&quot;"/>
+					<Add option="-DTEXTURE_DIR=&quot;C:/Users/beauv/CLionProjects/projet_graphique/textures/&quot;"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glew-cmake/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glfw/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glm"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+					<Add directory="/mingw/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 libglew_shared"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libglew_shared/fast">
+				<Option output="C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/bin/libglew-sharedd.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLEW_BUILD"/>
+					<Add option="-DWIN32_MEAN_AND_LEAN"/>
+					<Add option="-DVC_EXTRALEAN"/>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DGLEW_NO_GLU"/>
+					<Add option="-DSHADER_DIR=&quot;C:/Users/beauv/CLionProjects/projet_graphique/shaders/&quot;"/>
+					<Add option="-DTEXTURE_DIR=&quot;C:/Users/beauv/CLionProjects/projet_graphique/textures/&quot;"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glew-cmake/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glfw/include"/>
+					<Add directory="C:/Users/beauv/CLionProjects/projet_graphique/external/glm"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2024.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+					<Add directory="/mingw/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 libglew_shared/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/beauv/CLionProjects/projet_graphique/cmake-build-debug/external/glew-cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/external/glew-cmake/src/glew.c">
+			<Option target="libglew_static"/>
+			<Option target="libglew_shared"/>
+		</Unit>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/external/glfw/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\external\glfw\"/>
+		</Unit>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/external/glfw/CMake/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\external\glfw\CMake\"/>
+		</Unit>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/external/glfw/CMake/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\external\glfw\CMake\"/>
+		</Unit>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/external/glfw/CMake/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\external\glfw\CMake\"/>
+		</Unit>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/external/glfw/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\external\glfw\src\"/>
+		</Unit>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/external/glew-cmake/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\external\glew-cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/external/glew-cmake/GeneratePkgConfig.cmake">
+			<Option virtualFolder="CMake Files\external\glew-cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/external/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\external\glm\"/>
+		</Unit>
+		<Unit filename="C:/Users/beauv/CLionProjects/projet_graphique/external/glm/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\external\glm\glm\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
