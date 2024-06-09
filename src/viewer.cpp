@@ -15,6 +15,7 @@ Viewer::Viewer(int width, int height)
     camera_speed = 0.05f;
     camera_yaw = -90.0f;
     camera_pitch = 0.0f;
+
     std::string texture_dir = TEXTURE_DIR;
     std::string shader_dir = SHADER_DIR;
 
@@ -104,7 +105,7 @@ void Viewer::run()
         // Use glm::lookAt to create a view matrix from the camera vectors
         glm::mat4 view = glm::lookAt(camera_position, camera_position + camera_front, camera_up);
 
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 10.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 1000.0f);
 
         // Dessiner la skybox
         skybox->draw(view, projection);
@@ -156,7 +157,10 @@ void Viewer::process_input() {
         camera_position -= glm::normalize(glm::cross(camera_front, camera_up)) * camera_speed;
     if (glfwGetKey(win, GLFW_KEY_D) == GLFW_PRESS)
         camera_position += glm::normalize(glm::cross(camera_front, camera_up)) * camera_speed;
-
+    if (glfwGetKey(win, GLFW_KEY_SPACE) == GLFW_PRESS)
+        camera_position += camera_speed * camera_up;
+    if (glfwGetKey(win, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+        camera_position -= camera_speed * camera_up;
     // Camera rotation (example)
     if (glfwGetKey(win, GLFW_KEY_LEFT) == GLFW_PRESS)
         camera_yaw -= camera_speed;
@@ -200,3 +204,7 @@ void Viewer::on_mouse(double xpos, double ypos) {
     // Update camera vectors after modifying yaw or pitch
     update_camera_vectors();
 }
+
+
+
+
